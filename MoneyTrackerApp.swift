@@ -4,7 +4,7 @@ import Firebase
 
 @main
 struct MoneyTrackerApp: App {
-    //@StateObject private var budgetViewModel = BudgetViewModel()
+    @StateObject private var viewModel = BudgetViewModel()
     @StateObject var expensiveViewModel = ExpenseViewModel()
     @AppStorage("isDarkModeOn") var isDarkModeOn: Bool = {
         if UITraitCollection.current.userInterfaceStyle == .dark {
@@ -24,7 +24,7 @@ struct MoneyTrackerApp: App {
             ContentView()
                 .environment(\.colorScheme, isDarkModeOn ? .dark : .light)
                 .environmentObject(expensiveViewModel)
-               // .environmentObject(budgetViewModel)
+                .environmentObject(viewModel)
             
         }
     }
